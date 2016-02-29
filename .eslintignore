@@ -1,0 +1,8 @@
+# External libs
+bower_components/**/*.js
+node_modules/**/*.js
+
+# Generated files
+coverage/**/*.js
+dist/**/*.js
+tmp/**/*.js
