@@ -1,7 +1,7 @@
 {
   "name": "ember-pollboy",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Ember polling service.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -12,9 +12,10 @@
     "lint": "eslint *.js addon app config tests",
     "test": "npm run lint && ember test"
   },
-  "repository": "",
+  "main": "index.js",
+  "repository": "git@github.com:ciena-blueplanet/ember-pollboy.git",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 5.0.0"
   },
   "author": "Matthew Dahl (https://github.com/sandersky)",
   "license": "MIT",
