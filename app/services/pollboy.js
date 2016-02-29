@@ -1,1 +1,1 @@
-export {default} from 'ember-pollboy/services/pollboy'
+export {default, Poller} from 'ember-pollboy/services/pollboy'
