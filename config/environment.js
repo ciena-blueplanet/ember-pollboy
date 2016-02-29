@@ -1,35 +1,5 @@
-module.exports = function (environment) {
-  var ENV = {
-    modulePrefix: 'ember-pollboy',
-    environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
-    EmberENV: {
-      FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
-      }
-    },
+'use strict'
 
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
-    }
-  }
-
-  switch (environment) {
-    case 'test':
-      // Testem prefers this...
-      ENV.baseURL = '/'
-      ENV.locationType = 'none'
-
-      // keep test console output quieter
-      ENV.APP.LOG_ACTIVE_GENERATION = false
-      ENV.APP.LOG_VIEW_LOOKUPS = false
-
-      ENV.APP.rootElement = '#ember-testing'
-      break
-  }
-
-  return ENV
+module.exports = function (/* environment, appConfig */) {
+  return { }
 }
