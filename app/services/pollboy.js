@@ -17,19 +17,21 @@ export const Poller = Ember.Object.extend({
    * @returns {*} Timer information for use in cancelling, see `Ember.run.cancel`.
    */
   schedule () {
-    const callback = this.get('callback')
-    const context = this.get('context')
     const interval = this.get('interval')
 
     return Ember.run.later(
       this,
-      function () {
-        callback.apply(context).then(() => {
-          this.set('timer', this.schedule())
-        })
-      },
+      this.poll,
       interval
     )
+  },
+
+  /**
+   * Cancel current polling interval
+   */
+  cancel () {
+    const timer = this.get('timer')
+    Ember.run.cancel(timer)
   },
 
   /**
@@ -37,8 +39,21 @@ export const Poller = Ember.Object.extend({
    */
   pause () {
     this.set('isPaused', true)
-    const timer = this.get('timer')
-    Ember.run.cancel(timer)
+    this.cancel()
+  },
+
+  /**
+   * Poll immediately
+   */
+  poll () {
+    const callback = this.get('callback')
+    const context = this.get('context')
+
+    this.cancel()
+
+    callback.apply(context).then(() => {
+      this.set('timer', this.schedule())
+    })
   },
 
   /**
@@ -48,7 +63,7 @@ export const Poller = Ember.Object.extend({
     const isPaused = this.get('isPaused')
 
     if (isPaused) {
-      this.start()
+      this.poll()
     }
   },
 
@@ -56,6 +71,7 @@ export const Poller = Ember.Object.extend({
    * Begin polling
    */
   start () {
+    this.cancel() // Make sure no previous polling interval
     const timer = this.schedule()
     this.set('timer', timer)
   },
@@ -65,8 +81,7 @@ export const Poller = Ember.Object.extend({
    */
   stop () {
     this.set('isPaused', false)
-    const timer = this.get('timer')
-    Ember.run.cancel(timer)
+    this.cancel()
   }
 })
 
