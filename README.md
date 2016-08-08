@@ -56,7 +56,7 @@ export default Ember.Route.extend({
   },
 
   onPoll ()  {
-    this.getUsers()
+    return this.getUsers()
       .then((users) => {
         this.set('currentModel', users)
       })
