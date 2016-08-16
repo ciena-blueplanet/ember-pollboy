@@ -128,6 +128,7 @@ describeModule(
       const poller = createPoller(spy)
       poller.start()
       poller.pause()
+      poller.resume()
       endTest(() => {
         expect(spy.called).to.be.true
         done()
