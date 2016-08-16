@@ -3,23 +3,25 @@ const {run} = Ember
 
 export default Ember.Object.extend({
   /**
-   * Used to determine if poller is currently paused (i.e. when tab is not visible)
+   * Used to determine if poller is currently not polling (i.e. when tab is not visible)
    * @type {Boolean}
    */
   isPaused: false,
-
   /**
    * Schedule next poll interval
    * @returns {*} Timer information for use in cancelling, see `Ember.run.cancel`.
    */
   schedule () {
-    const interval = this.get('interval')
+    // Don't schedule another poll if we're not polling
+    if (this.get('isPaused') !== true) {
+      const interval = this.get('interval')
 
-    return run.later(
-      this,
-      this.poll,
-      interval
-    )
+      return run.later(
+        this,
+        this.poll,
+        interval
+      )
+    }
   },
 
   /**
@@ -60,6 +62,7 @@ export default Ember.Object.extend({
 
     if (isPaused) {
       this.poll()
+      this.set('isPaused', false)
     }
   },
 
@@ -76,7 +79,7 @@ export default Ember.Object.extend({
    * Stop polling
    */
   stop () {
-    this.set('isPaused', false)
+    this.set('isPaused', true)
     this.cancel()
   }
 })
