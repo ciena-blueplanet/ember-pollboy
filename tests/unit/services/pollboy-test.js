@@ -4,6 +4,7 @@ const {RSVP} = Ember
 import Poller from 'ember-pollboy/classes/poller'
 import Pollboy from 'ember-pollboy/services/pollboy'
 import {afterEach, beforeEach, describe, it} from 'mocha'
+import {describeModule} from 'ember-mocha'
 import sinon from 'sinon'
 
 describe('Unit: Service | pollboy', function () {
@@ -72,3 +73,65 @@ describe('Unit: Service | pollboy', function () {
     //
   })
 })
+
+function createPoller (callback) {
+  const context = {}
+  const interval = 120
+  const poller = Poller.create({context, callback: () => {
+    callback()
+    poller.stop()
+    return Ember.RSVP.Promise.resolve(true)
+  }, interval})
+  return poller
+}
+
+function endTest (testEnd) {
+  Ember.run.later(testEnd, 300)
+}
+
+describeModule(
+  'service:pollboy',
+  'Unit : pollboy Poller',
+  {
+    unit: true
+  },
+  function () {
+    it('polls at an interval', function (done) {
+      const poller = createPoller(done)
+      poller.start()
+    })
+
+    it('can stop polling', function (done) {
+      const spy = sinon.spy()
+      const poller = createPoller(spy)
+      poller.start()
+      endTest(() => {
+        expect(spy.calledOnce).to.be.true
+        done()
+      })
+    })
+
+    it('can be paused', function (done) {
+      const spy = sinon.spy()
+      const poller = createPoller(spy)
+      poller.start()
+      poller.pause()
+      endTest(() => {
+        expect(spy.called).to.be.false
+        poller.stop()
+        done()
+      })
+    })
+
+    it('can resume from being paused', function (done) {
+      const spy = sinon.spy()
+      const poller = createPoller(spy)
+      poller.start()
+      poller.pause()
+      endTest(() => {
+        expect(spy.called).to.be.true
+        done()
+      })
+    })
+  }
+)
