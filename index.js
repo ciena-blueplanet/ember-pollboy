@@ -2,5 +2,5 @@
 'use strict'
 
 module.exports = {
-  name: 'ember-pollboy-addon'
+  name: 'ember-pollboy'
 }
