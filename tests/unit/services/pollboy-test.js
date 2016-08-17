@@ -89,7 +89,8 @@ describe('Unit: Service | pollboy', function () {
     it('pauses all pollers if the document is hidden', function () {
       service.onVisibilityChange({target: {hidden: true}})
       pollList.forEach(function (poller) {
-        expect(poller.paused.called).to.be.true
+        expect(poller.pause.called).to.be.true
+        expect(poller.resume.called).to.be.false
       })
     })
 
@@ -97,6 +98,7 @@ describe('Unit: Service | pollboy', function () {
       service.onVisibilityChange({target: {hidden: false}})
       pollList.forEach(function (poller) {
         expect(poller.resume.called).to.be.true
+        expect(poller.pause.called).to.be.false
       })
     })
   })
