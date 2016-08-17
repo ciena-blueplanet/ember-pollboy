@@ -87,9 +87,9 @@ describe('Unit: Service | pollboy', function () {
     })
 
     it('pauses all pollers if the document is hidden', function () {
-      service.onVisibilityChange({target: {hidden: false}})
+      service.onVisibilityChange({target: {hidden: true}})
       pollList.forEach(function (poller) {
-        expect(poller.resume.called).to.be.true
+        expect(poller.paused.called).to.be.true
       })
     })
 
