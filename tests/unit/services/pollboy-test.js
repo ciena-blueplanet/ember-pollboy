@@ -6,32 +6,39 @@ import Pollboy from 'ember-pollboy/services/pollboy'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
+const pollerMethods = [
+  'cancel',
+  'pause',
+  'poll',
+  'resume',
+  'schedule',
+  'start',
+  'stop'
+]
+
+function stubObject (methods) {
+  return methods.reduce((spyObj, methodName) => {
+    spyObj[methodName] = sinon.spy()
+    return spyObj
+  }, {})
+}
+
 describe('Unit: Service | pollboy', function () {
-  let sandbox, service
+  let sandbox, service, mockPoller
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
 
-    ;[
-      'cancel',
-      'pause',
-      'poll',
-      'resume',
-      'schedule',
-      'start',
-      'stop'
-    ]
-      .forEach((method) => {
-        const a = Poller
-        debugger
-        sandbox.spy(a.prototype, method)
-      })
+    mockPoller = stubObject(pollerMethods)
+
+    sandbox.stub(Poller, 'create').returns(mockPoller)
 
     service = Pollboy.create()
   })
 
   afterEach(function () {
     sandbox.restore()
+    mockPoller = null
   })
 
   it('starts off with no poller instances', function () {
@@ -51,7 +58,6 @@ describe('Unit: Service | pollboy', function () {
     })
 
     it('starts new Poller instance', function () {
-      debugger
       expect(poller.start.callCount).to.equal(1)
     })
 
@@ -60,15 +66,54 @@ describe('Unit: Service | pollboy', function () {
     })
 
     it('returns new instance of Poller class', function () {
-      expect(poller instanceof Poller).to.be.true
+      expect(poller).to.equal(mockPoller)
     })
   })
 
   describe('.onVisibilityChange()', function () {
     //
+    let callback, pollList
+    beforeEach(function () {
+      pollList = [mockPoller]
+      callback = sandbox.spy(() => RSVP.resolve())
+      pollList.push(service.add(null, callback, 100))
+      pollList.push(service.add(null, callback, 100))
+      pollList.push(service.add(null, callback, 100))
+    })
+    afterEach(function () {
+      pollList.forEach(function (poller) {
+        service.remove(poller)
+      })
+    })
+
+    it('pauses all pollers if the document is hidden', function () {
+      service.onVisibilityChange({target: {hidden: false}})
+      pollList.forEach(function (poller) {
+        expect(poller.resume.called).to.be.true
+      })
+    })
+
+    it('unpauses all pollers if the document is not hidden', function () {
+      service.onVisibilityChange({target: {hidden: false}})
+      pollList.forEach(function (poller) {
+        expect(poller.resume.called).to.be.true
+      })
+    })
   })
 
   describe('.remove()', function () {
     //
+    let poller, callback
+    beforeEach(function () {
+      callback = sandbox.spy(() => RSVP.resolve())
+      poller = service.add(null, callback, 100)
+      service.remove(poller)
+    })
+    it('removes a poller', function () {
+      expect(service.get('pollers')).to.eql([])
+    })
+    it('cancels the polling of poller', function () {
+      expect(mockPoller.cancel.called)
+    })
   })
 })

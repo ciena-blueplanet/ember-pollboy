@@ -19,12 +19,13 @@ export default Ember.Service.extend({
    * When user switches browser tabs polling will stop.
    * When user switches applications polling will stop.
    * When page comes back into focus any pollers that were stopped due to loss of page focus will resume.
+   * @param {Event} event - visibilitychange event data
    */
-  onVisibilityChange () {
+  onVisibilityChange (event) {
     const pollers = this.get('pollers')
 
     // If page is no longer visible pause pollers
-    if (document.hidden) {
+    if (event.target.hidden) {
       pollers.forEach((poller) => {
         poller.pause()
       })
