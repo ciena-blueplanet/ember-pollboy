@@ -1,8 +1,7 @@
-const expect = chai.expect
-
+import {expect} from 'chai'
 import {beforeEach, describe, it} from 'mocha'
 
-describe('pollboy initializer', function () {
+describe('Unit: Initializer | pollboy', function () {
   let route
 
   beforeEach(function () {
