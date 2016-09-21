@@ -1,3 +1,9 @@
+# 0.4.0
+
+* **Added** new test helper, `stubPollboy`,  for acceptance tests that mocks the polling service to not actually poll (otherwise acceptance tests will never complete).
+* **Replaced** `ember-cli-blanket` with `ember-cli-code-coverage` for test coverage.
+* **Upgraded** `devDependencies` to latest versions.
+
 # 0.3.2
 
 * **Updated** Travis configuration to test addon against older versions of Ember.
