@@ -11,7 +11,12 @@ export default Ember.Service.extend({
 
   init () {
     this._super()
-    document.addEventListener('visibilitychange', this.onVisibilityChange.bind(this), false)
+    this._onVisibilityChangeHandler = this.onVisibilityChange.bind(this)
+    document.addEventListener('visibilitychange', this._onVisibilityChangeHandler, false)
+  },
+
+  willDestroy () {
+    document.removeEventListener('visibilitychange', this._onVisibilityChangeHandler)
   },
 
   /**
