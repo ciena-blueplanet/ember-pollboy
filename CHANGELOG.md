@@ -1,3 +1,7 @@
+# 0.4.1
+
+* **Fixes** memory leak
+
 # 0.4.0
 
 * **Added** new test helper, `stubPollboy`,  for acceptance tests that mocks the polling service to not actually poll (otherwise acceptance tests will never complete).
