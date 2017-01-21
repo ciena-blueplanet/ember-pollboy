@@ -1,3 +1,4 @@
+[ember-img]: https://img.shields.io/badge/ember-1.12.2+-green.svg "Ember 1.12.2+"
 [ci-img]: https://img.shields.io/travis/ciena-blueplanet/ember-pollboy.svg "Travis CI Build Status"
 [ci-url]: https://travis-ci.org/ciena-blueplanet/ember-pollboy
 [cov-img]: https://img.shields.io/coveralls/ciena-blueplanet/ember-pollboy.svg "Coveralls Code Coverage"
@@ -5,7 +6,7 @@
 [npm-img]: https://img.shields.io/npm/v/ember-pollboy.svg "NPM Version"
 [npm-url]: https://www.npmjs.com/package/ember-pollboy
 
-# ember-pollboy <br /> [![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
+# ember-pollboy <br /> [![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url] ![Ember][ember-img]
 
 This addon provides a polling service to make it easy to setup polling in Ember routes.
 One of the benefits to using this service is that it only polls when the page is in view,
@@ -56,7 +57,7 @@ export default Ember.Route.extend({
   },
 
   onPoll ()  {
-    this.getUsers()
+    return this.getUsers()
       .then((users) => {
         this.set('currentModel', users)
       })

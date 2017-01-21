@@ -3,7 +3,7 @@ import Ember from 'ember'
 const {Route} = Ember
 import {beforeEach, describe, it} from 'mocha'
 
-describe('pollboy initializer', function () {
+describe('Unit: Initializer | pollboy', function () {
   let route
 
   beforeEach(function () {
