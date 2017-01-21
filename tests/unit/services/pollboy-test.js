@@ -89,16 +89,16 @@ describe('Unit: Service | pollboy', function () {
     it('pauses all pollers if the document is hidden', function () {
       service.onVisibilityChange({target: {hidden: true}})
       pollList.forEach(function (poller) {
-        expect(poller.pause.called).to.be.true
-        expect(poller.resume.called).to.be.false
+        expect(poller.pause.called).to.equal(true)
+        expect(poller.resume.called).to.equal(false)
       })
     })
 
     it('unpauses all pollers if the document is not hidden', function () {
       service.onVisibilityChange({target: {hidden: false}})
       pollList.forEach(function (poller) {
-        expect(poller.resume.called).to.be.true
-        expect(poller.pause.called).to.be.false
+        expect(poller.resume.called).to.equal(true)
+        expect(poller.pause.called).to.equal(false)
       })
     })
   })

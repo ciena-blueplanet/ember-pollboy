@@ -1,4 +1,5 @@
 import Ember from 'ember'
+const {Service} = Ember
 import Poller from '../classes/poller'
 
 /**
@@ -6,7 +7,7 @@ import Poller from '../classes/poller'
  * @returns {Ember.RSVP.Promise} Resolved when next polling interval should begin
  */
 
-export default Ember.Service.extend({
+export default Service.extend({
   pollers: [],
 
   init () {

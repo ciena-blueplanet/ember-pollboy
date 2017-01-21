@@ -30,7 +30,7 @@ describe('Unit : Class | Poller', function () {
     const poller = createPoller(spy)
     poller.start()
     endTest(() => {
-      expect(spy.calledOnce).to.be.true
+      expect(spy.calledOnce).to.equal(true)
       done()
     })
   })
@@ -41,7 +41,7 @@ describe('Unit : Class | Poller', function () {
     poller.start()
     poller.pause()
     endTest(() => {
-      expect(spy.called).to.be.false
+      expect(spy.called).to.equal(false)
       poller.stop()
       done()
     })
@@ -54,7 +54,7 @@ describe('Unit : Class | Poller', function () {
     poller.pause()
     poller.resume()
     endTest(() => {
-      expect(spy.called).to.be.true
+      expect(spy.called).to.equal(true)
       done()
     })
   })
