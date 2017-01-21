@@ -1,15 +1,16 @@
-const expect = chai.expect
-
+import {expect} from 'chai'
+import Ember from 'ember'
+const {Route} = Ember
 import {beforeEach, describe, it} from 'mocha'
 
 describe('pollboy initializer', function () {
   let route
 
   beforeEach(function () {
-    route = Ember.Route.create()
+    route = Route.create()
   })
 
   it('has pollboy property', function () {
-    expect(route.get('pollboy')).to.be.defined
+    expect(route.get('pollboy')).not.to.equal(undefined)
   })
 })

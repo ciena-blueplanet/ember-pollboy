@@ -1,4 +1,5 @@
 import Ember from 'ember'
+const {Service, run} = Ember
 
 /**
  * @callback {Function} PollboyCallback
@@ -19,7 +20,7 @@ export const Poller = Ember.Object.extend({
   schedule () {
     const interval = this.get('interval')
 
-    return Ember.run.later(
+    return run.later(
       this,
       this.poll,
       interval
@@ -31,7 +32,7 @@ export const Poller = Ember.Object.extend({
    */
   cancel () {
     const timer = this.get('timer')
-    Ember.run.cancel(timer)
+    run.cancel(timer)
   },
 
   /**
@@ -85,7 +86,7 @@ export const Poller = Ember.Object.extend({
   }
 })
 
-export default Ember.Service.extend({
+export default Service.extend({
   pollers: [],
 
   init () {
