@@ -1,16 +1,19 @@
+sudo: required
+dist: trusty
 language: node_js
 node_js:
 - '5.0'
 - 'stable'
-sudo: false
 branches:
   except:
-  - "/^v[0-9\\.]+/"
+  - /^v[0-9\.]+/
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
+    - google-chrome
     packages:
+    - google-chrome-stable
     - g++-4.8
 cache:
   directories:
