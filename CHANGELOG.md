@@ -1,3 +1,9 @@
+# 0.6.0
+
+* **Added** pull request template for Github.
+* **Updated** CI to test in Chrome as well as Firefox.
+
+
 # 0.5.1
 
 * **Upgraded** to test against Ember 2.11.
