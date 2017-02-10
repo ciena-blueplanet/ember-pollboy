@@ -1,3 +1,7 @@
+# 0.6.1
+
+* **Fixed** build to publish.
+
 # 0.6.0
 
 * **Added** pull request template for Github.
