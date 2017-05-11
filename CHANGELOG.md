@@ -1,3 +1,8 @@
+# 0.6.2 (2017-05-11)
+* **Added** `.pr-bumper.json` file to restore publishing
+* **Updated** secure auth tokens
+
+
 # 0.6.1
 
 * **Fixed** build to publish.
