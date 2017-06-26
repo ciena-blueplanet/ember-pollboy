@@ -22,23 +22,8 @@ cache:
 
 env:
   matrix:
-  - EMBER_TRY_SCENARIO=ember-1-12
-  - EMBER_TRY_SCENARIO=ember-1-13
-  - EMBER_TRY_SCENARIO=ember-2-0
-  - EMBER_TRY_SCENARIO=ember-2-1
-  - EMBER_TRY_SCENARIO=ember-2-2
-  - EMBER_TRY_SCENARIO=ember-2-3
-  - EMBER_TRY_SCENARIO=ember-2-4
-  - EMBER_TRY_SCENARIO=ember-2-5
-  - EMBER_TRY_SCENARIO=ember-2-6
-  - EMBER_TRY_SCENARIO=ember-2-7
   - EMBER_TRY_SCENARIO=ember-2-8
-  - EMBER_TRY_SCENARIO=ember-2-9
-  - EMBER_TRY_SCENARIO=ember-2-10
-  - EMBER_TRY_SCENARIO=default
-  - EMBER_TRY_SCENARIO=ember-release
-  - EMBER_TRY_SCENARIO=ember-beta
-  - EMBER_TRY_SCENARIO=ember-canary
+  - EMBER_TRY_SCENARIO=ember-default
   global:
     - CXX=g++-4.8
     - secure: Ws3qXGyj8zHDQ83r4XxTq9bZGoY4r0ypuzZ2W/lHGjwQpkEwut79z5MTZd8BlYS/UWxruG04FyiftJmO9Sw9q3G/VAyxbXiLfeRF34bmh0Ymr4iNz/TYiRjw69S/0kuT1W0zV5sxB3JiE37O3T1bHyqZ/H9kMSUA0NGuGkZxoovM8bDCBBnYOnvOQAW70YEWccQO3w/mUmRX+OhUMblsR/y3uIBhmUn7wdCqOdT9PFZM68DWma6DhgcgRbtGjShJ0+jogeEVbb6mqeaPL5l/0sgBHSNY3SEOOKC6Hqo5FyhTvPayzqBtB5xDPehIgHmrJibs925Y6zlIWJHVFu4JjVNGOyf8GKEVN8yFxT5Nyma2hV5JAErCYIKttKiN298aJdkLw/VaHEdkgi2f+RY7Mrjj7eqD7nsdZ6LdMbVqqlDfzX7pKTktJwVxUkQy8WmdufG/LHgK4C6RVdcG7hPkr3IytCpsUMNIEnpOfBbrXG56ENK4akF39AmbagQWr4hExIWsKaYihH9VNnShunsBoAuSuLZaZPQi/VPvmM7J5U0Acaql33A8Rxy/iZ5x2SvqCYO/t2mKj5x72yYhUO/3YY/H5FcughRYUn0rQYvdiCU55JXJBbm0iGEWbRT8y38gaXwai058SeHhZPMe6lxsG6OZMXFuWRqZCFLF7+iNCrs=
@@ -72,7 +57,7 @@ deploy:
     secure: CUE3NS6dH9snRSvOZjxR9zUT4u5CsxzafCpIVyCboub5fTaxm58YMnbFAjBIYAmU2HTrHIIhHCrPPNyHdlOcLCdpYdJ2AFP2tvLjMAso6p0M15Cic4Sh01u2sQIfdFWBN82ucqlx13Mx7+JEbewuoswdcgMBOEyD3UbQ9Uo6j9YzYym19AY9+ndqcV9TD3Jp1yxBcQPo53poADHqMPFt2xQKVMdSbAua5zz8fPMPsPmvgUrdhVx0J9Ly2uF8Rdhp3L73gspG66GA/MZqd0264mr7lcq3LxW7EtIAJaVFLsYNYjYNBAjai1/jtDoA1paRh+lClD/X2waSEIECgZhm8mOzqcLGRNvzwXQTz7J2I8wh2tKEfEQmnUQxMlwIy2yWakFBjbxG3/0lwXKE1OTadcjjA+J0WUDjsWumuSq8jXIFNupUo++Jx6K2lchbGCTLoMGFhaRpoGdwItjvnIape2ivnqTXNbFiN0ysf+fAcaS33YdHNNrYEhGEy1DskHj1uC1Xz7Y5gdhYTfqXgkASyFlESOVNSPQh5L0zQp9la02fkx2LfDhYryrnFrkYbTU3O0jX9MrLBIXRdCG/ErkOjIFwMJL8aiO0hiy1jIgCB+R01BOTrb2VQf17yYV+rKZ+/Db6beJqB3KzhjaydOO05OxOb+bv9qwAxXdWJ9+PO0Y=
   on:
     all_branches: true
-    condition: "$EMBER_TRY_SCENARIO = 'default'"
+    condition: "$EMBER_TRY_SCENARIO = 'ember-default'"
     node: 'stable'
     tags: true
 

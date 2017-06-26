@@ -11,7 +11,7 @@
     "lint": "lint-all-the-things",
     "start": "ember server",
     "test": "npm run lint && npm run test-addon",
-    "test-addon": "EMBER_TRY_SCENARIO=${EMBER_TRY_SCENARIO:=default} && ember try:one $EMBER_TRY_SCENARIO --- COVERAGE=true ember test"
+    "test-addon": "EMBER_TRY_SCENARIO=${EMBER_TRY_SCENARIO:=ember-default} && ember try:one $EMBER_TRY_SCENARIO --- COVERAGE=true ember test"
   },
   "main": "index.js",
   "repository": "git@github.com:ciena-blueplanet/ember-pollboy.git",
@@ -22,7 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.5.0",
-    "ember-cli": "^2.11.0",
+    "ember-cli": "^2.12.3",
     "ember-cli-app-version": "^2.0.1",
     "ember-cli-chai": "^0.3.2",
     "ember-cli-code-coverage": "0.3.11",
@@ -40,13 +40,13 @@
     "ember-resolver": "^2.1.1",
     "ember-sinon": "0.6.0",
     "ember-test-utils": "^1.10.3",
-    "loader.js": "^4.1.0"
+    "loader.js": "^4.2.3"
   },
   "keywords": [
     "ember-addon"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.1.5"
+    "ember-cli-babel": "^5.1.7"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
