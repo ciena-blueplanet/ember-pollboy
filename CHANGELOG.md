@@ -1,3 +1,8 @@
+# 0.6.3 (2017-07-10)
+
+Upgrade Ember-cli to 2.12.3
+
+
 # 0.6.2 (2017-05-11)
 * **Added** `.pr-bumper.json` file to restore publishing
 * **Updated** secure auth tokens
