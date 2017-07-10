@@ -14,7 +14,6 @@ addons:
     packages:
     - google-chrome-stable
     - g++-4.8
-  firefox: 'latest-esr'
 
 cache:
   directories:
@@ -22,8 +21,12 @@ cache:
 
 env:
   matrix:
+  - EMBER_TRY_SCENARIO=ember-lts-2.4
   - EMBER_TRY_SCENARIO=ember-lts-2.8
   - EMBER_TRY_SCENARIO=ember-default
+  - EMBER_TRY_SCENARIO=ember-release
+  - EMBER_TRY_SCENARIO=ember-beta
+  - EMBER_TRY_SCENARIO=ember-canary
   global:
     - CXX=g++-4.8
     - secure: Ws3qXGyj8zHDQ83r4XxTq9bZGoY4r0ypuzZ2W/lHGjwQpkEwut79z5MTZd8BlYS/UWxruG04FyiftJmO9Sw9q3G/VAyxbXiLfeRF34bmh0Ymr4iNz/TYiRjw69S/0kuT1W0zV5sxB3JiE37O3T1bHyqZ/H9kMSUA0NGuGkZxoovM8bDCBBnYOnvOQAW70YEWccQO3w/mUmRX+OhUMblsR/y3uIBhmUn7wdCqOdT9PFZM68DWma6DhgcgRbtGjShJ0+jogeEVbb6mqeaPL5l/0sgBHSNY3SEOOKC6Hqo5FyhTvPayzqBtB5xDPehIgHmrJibs925Y6zlIWJHVFu4JjVNGOyf8GKEVN8yFxT5Nyma2hV5JAErCYIKttKiN298aJdkLw/VaHEdkgi2f+RY7Mrjj7eqD7nsdZ6LdMbVqqlDfzX7pKTktJwVxUkQy8WmdufG/LHgK4C6RVdcG7hPkr3IytCpsUMNIEnpOfBbrXG56ENK4akF39AmbagQWr4hExIWsKaYihH9VNnShunsBoAuSuLZaZPQi/VPvmM7J5U0Acaql33A8Rxy/iZ5x2SvqCYO/t2mKj5x72yYhUO/3YY/H5FcughRYUn0rQYvdiCU55JXJBbm0iGEWbRT8y38gaXwai058SeHhZPMe6lxsG6OZMXFuWRqZCFLF7+iNCrs=
@@ -31,23 +34,31 @@ env:
 matrix:
   fast_finish: true
   allow_failures:
+  - env: EMBER_TRY_SCENARIO=ember-release
+  - env: EMBER_TRY_SCENARIO=ember-beta
+  - env: EMBER_TRY_SCENARIO=ember-canary
   - node_js: 'stable'
 
 before_install:
-- "export DISPLAY=:99.0"
-- "sh -e /etc/init.d/xvfb start"
 - npm config set spin false
-- npm install -g coveralls pr-bumper
+- npm install -g coveralls pr-bumper@^1.0.0
+- $(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh
 
 install:
 - $(npm root -g)/pr-bumper/.travis/maybe-install.sh
 
+before_script:
+- "export DISPLAY=:99.0"
+- "sh -e /etc/init.d/xvfb start"
+- sleep 3 # give xvfb some time to start
+
 script:
 - $(npm root -g)/pr-bumper/.travis/maybe-test.sh
-- if [ $EMBER_TRY_SCENARIO == "default" ]; then $(npm root -g)/pr-bumper/.travis/maybe-bump-version.sh; fi
+- .travis/maybe-bump-version.sh
 
 after_success:
-- $(npm root -g)/pr-bumper/.travis/maybe-publish-coverage.sh
+- .travis/maybe-publish-coverage.sh
+- .travis/maybe-publish-gh-pages.sh
 
 deploy:
   provider: npm
@@ -58,11 +69,8 @@ deploy:
   on:
     all_branches: true
     condition: "$EMBER_TRY_SCENARIO = 'ember-default'"
-    node: 'stable'
+    node: '6.9.1'
     tags: true
-
-after_deploy:
-- .travis/publish-gh-pages.sh
 
 notifications:
   slack:

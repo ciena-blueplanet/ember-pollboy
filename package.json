@@ -16,7 +16,7 @@
   "main": "index.js",
   "repository": "git@github.com:ciena-blueplanet/ember-pollboy.git",
   "engines": {
-    "node": ">= 5.0.0"
+    "node": ">= 6.0.0"
   },
   "author": "Matthew Dahl (https://github.com/sandersky)",
   "license": "MIT",
@@ -31,12 +31,11 @@
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-mocha": "0.13.2",
     "ember-cli-shims": "^1.0.2",
-    "ember-cli-test-loader": "^1.1.1",
     "ember-cli-uglify": "^1.2.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.6.0",
-    "ember-resolver": "^2.1.1",
+    "ember-resolver": "^2.0.3",
     "ember-sinon": "0.6.0",
     "ember-source": "~2.12.0",
     "ember-test-utils": "^1.10.3",
