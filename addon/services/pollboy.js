@@ -13,11 +13,15 @@ export default Service.extend({
   init () {
     this._super()
     this._onVisibilityChangeHandler = this.onVisibilityChange.bind(this)
-    document.addEventListener('visibilitychange', this._onVisibilityChangeHandler, false)
+    if (typeof document !== 'undefined') {
+      document.addEventListener('visibilitychange', this._onVisibilityChangeHandler, false)
+    }
   },
 
   willDestroy () {
-    document.removeEventListener('visibilitychange', this._onVisibilityChangeHandler)
+    if (typeof document !== 'undefined') {
+      document.removeEventListener('visibilitychange', this._onVisibilityChangeHandler)
+    }
   },
 
   /**
