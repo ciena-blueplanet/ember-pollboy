@@ -1,3 +1,7 @@
+# 0.7.0 (2017-11-17)
+
+* Added FastBoot compatibility by confirming that document exists before referencing it.
+
 # 0.6.4 (2017-11-17)
 * Install `Bower` as a `devDependeny` in _package.json_ since it was removed in Ember CLI 2.12 and `ember-try` seems to have issues with that
 * Pin `ember-cli-htmlbars-inline-precompile` to `0.3.12`
