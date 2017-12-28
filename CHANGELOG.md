@@ -1,3 +1,7 @@
+# 0.8.0 (2017-12-28)
+
+* Added FastBoot compatibility by confirming that document exists before referencing it.
+
 # 0.7.0 (2017-11-17)
 
 * Added FastBoot compatibility by confirming that document exists before referencing it.
