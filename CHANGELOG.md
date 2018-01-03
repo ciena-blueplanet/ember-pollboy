@@ -1,3 +1,11 @@
+# 0.7.1 (2018-01-03)
+
+Please add a description of your change here, it will be automatically prepended to the `CHANGELOG.md` file.
+* Remove _package-lock.json_ until officially support Node 8
+* Pin `ember-cli-code-coverage@0.3.12`
+* Remove useLintTree ember-cli-mocha config option
+* Upgrade `ember-frost-test` to `^4.0.0`
+
 # 0.7.0 (2017-11-17)
 
 * Added FastBoot compatibility by confirming that document exists before referencing it.
