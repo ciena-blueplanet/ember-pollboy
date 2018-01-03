@@ -1,6 +1,9 @@
+# 0.8.0 (2017-12-28)
+
+We experienced an issue with our release version strategy and this release should not have occurred.  Unfortunately the release that should have (0.7.1) did then occur so we will now release version 0.8.1 to get everything back on track.
+
 # 0.7.1 (2018-01-03)
 
-Please add a description of your change here, it will be automatically prepended to the `CHANGELOG.md` file.
 * Remove _package-lock.json_ until officially support Node 8
 * Pin `ember-cli-code-coverage@0.3.12`
 * Remove useLintTree ember-cli-mocha config option
