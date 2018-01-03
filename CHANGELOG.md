@@ -1,3 +1,7 @@
+# 0.8.1 (2018-01-03)
+
+We experienced an issue with our release version strategy and version `0.8.0` should not have been released.  Unfortunately the release that should have been - `0.7.1` - was then released so this PR will release `0.8.1` to get everything back on track.
+
 # 0.8.0 (2017-12-28)
 
 We experienced an issue with our release version strategy and this release should not have occurred.  Unfortunately the release that should have (0.7.1) did then occur so we will now release version 0.8.1 to get everything back on track.
