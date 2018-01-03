@@ -41,7 +41,7 @@ describe('Unit: Service | pollboy', function () {
     mockPoller = null
   })
 
-  it('starts off with no poller instances', function () {
+  it('should start off with no poller instances', function () {
     expect(service.get('pollers')).to.eql([])
   })
 
@@ -57,15 +57,15 @@ describe('Unit: Service | pollboy', function () {
       service.remove(poller) // Make sure we stop polling after test is complete
     })
 
-    it('starts new Poller instance', function () {
+    it('should start new Poller instance', function () {
       expect(poller.start.callCount).to.equal(1)
     })
 
-    it('adds new Poller instance to list of pollers', function () {
+    it('should add new Poller instance to list of pollers', function () {
       expect(service.get('pollers')).to.eql([poller])
     })
 
-    it('returns new instance of Poller class', function () {
+    it('should return new instance of Poller class', function () {
       expect(poller).to.equal(mockPoller)
     })
   })
@@ -86,7 +86,7 @@ describe('Unit: Service | pollboy', function () {
       })
     })
 
-    it('pauses all pollers if the document is hidden', function () {
+    it('should pause all pollers if the document is hidden', function () {
       service.onVisibilityChange({target: {hidden: true}})
       pollList.forEach(function (poller) {
         expect(poller.pause.called).to.equal(true)
@@ -94,7 +94,7 @@ describe('Unit: Service | pollboy', function () {
       })
     })
 
-    it('unpauses all pollers if the document is not hidden', function () {
+    it('should unpause all pollers if the document is not hidden', function () {
       service.onVisibilityChange({target: {hidden: false}})
       pollList.forEach(function (poller) {
         expect(poller.resume.called).to.equal(true)
@@ -111,10 +111,10 @@ describe('Unit: Service | pollboy', function () {
       poller = service.add(null, callback, 100)
       service.remove(poller)
     })
-    it('removes a poller', function () {
+    it('should remove a poller', function () {
       expect(service.get('pollers')).to.eql([])
     })
-    it('cancels the polling of poller', function () {
+    it('should cancel the polling of poller', function () {
       expect(mockPoller.cancel.called)
     })
   })
