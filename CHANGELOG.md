@@ -1,3 +1,9 @@
+# 1.0.0 (2018-03-06)
+* **Updated** test helpers to now be provided from addon-test-support. For example, test helpers previously available at `<app-name>/tests/helpers/ember-pollboy` are now available via `ember-pollboy/test-support/mock`
+* **Updated** to add information to `README.md` about test helpers
+* **Updated** `ember-test-utils` to `^8.1.0`
+* **Updated** code coverage config to be in correct directory and added `json-summary` reporter 
+
 # 0.8.1 (2018-01-03)
 
 We experienced an issue with our release version strategy and version `0.8.0` should not have been released.  Unfortunately the release that should have been - `0.7.1` - was then released so this PR will release `0.8.1` to get everything back on track.
