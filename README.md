@@ -93,7 +93,6 @@ and output code coverage.
 
 ### Test Helpers
 
-
 The following test helpers are provided at `ember-pollboy/test-support/mock` to assist with writing tests for code that uses `ember-pollboy`:
 
 * [PollerMock](addon-test-support/mock.js)
