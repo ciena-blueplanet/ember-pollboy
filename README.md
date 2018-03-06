@@ -85,3 +85,17 @@ export default Ember.Route.extend({
 In the above example you will notice after we retrieve the model we setup a polling
 interval using `ember-pollboy`. When the route is deactivate we remove our poller from
 the service to ensure polling stops when switching routes.
+
+## Testing
+
+Run `npm test` from the root of the project to run linting checks as well as execute the test suite
+and output code coverage.
+
+### Test Helpers
+
+The following test helpers are provided at `ember-pollboy/test-support/mock` to assist with writing tests for code that uses `ember-pollboy`:
+
+* [PollerMock](addon-test-support/mock.js)
+* [serviceMock](addon-test-support/mock.js)
+* [stubPollboy](addon-test-support/mock.js)
+
