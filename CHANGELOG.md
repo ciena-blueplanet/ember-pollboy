@@ -1,3 +1,13 @@
+# 1.0.1 (2018-03-08)
+* **Updated** pull request template
+* **Added** issue template
+* **Updated** to `pr-bumper` version `3`
+* **Updated** to node 8
+* **Added** slack integration
+* **Updated** `ember-frost-test` to `^4.0.1`
+* **Updated** `ember-test-utils` to `^8.1.1`
+* **Added** `package-lock.json` file
+
 # 1.0.0 (2018-03-06)
 * **Updated** test helpers to now be provided from addon-test-support. For example, test helpers previously available at `<app-name>/tests/helpers/ember-pollboy` are now available via `ember-pollboy/test-support/mock`
 * **Updated** to add information to `README.md` about test helpers
