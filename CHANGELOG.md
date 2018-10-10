@@ -1,3 +1,43 @@
+# 1.0.2 (2018-07-20)
+
+* **Fixed** Travis API key.
+
+
+# 1.0.1 (2018-03-08)
+* **Updated** pull request template
+* **Added** issue template
+* **Updated** to `pr-bumper` version `3`
+* **Updated** to node 8
+* **Added** slack integration
+* **Updated** `ember-frost-test` to `^4.0.1`
+* **Updated** `ember-test-utils` to `^8.1.1`
+* **Added** `package-lock.json` file
+
+# 1.0.0 (2018-03-06)
+* **Updated** test helpers to now be provided from addon-test-support. For example, test helpers previously available at `<app-name>/tests/helpers/ember-pollboy` are now available via `ember-pollboy/test-support/mock`
+* **Updated** to add information to `README.md` about test helpers
+* **Updated** `ember-test-utils` to `^8.1.0`
+* **Updated** code coverage config to be in correct directory and added `json-summary` reporter 
+
+# 0.8.1 (2018-01-03)
+
+We experienced an issue with our release version strategy and version `0.8.0` should not have been released.  Unfortunately the release that should have been - `0.7.1` - was then released so this PR will release `0.8.1` to get everything back on track.
+
+# 0.8.0 (2017-12-28)
+
+We experienced an issue with our release version strategy and this release should not have occurred.  Unfortunately the release that should have (0.7.1) did then occur so we will now release version 0.8.1 to get everything back on track.
+
+# 0.7.1 (2018-01-03)
+
+* Remove _package-lock.json_ until officially support Node 8
+* Pin `ember-cli-code-coverage@0.3.12`
+* Remove useLintTree ember-cli-mocha config option
+* Upgrade `ember-frost-test` to `^4.0.0`
+
+# 0.7.0 (2017-11-17)
+
+* Added FastBoot compatibility by confirming that document exists before referencing it.
+
 # 0.6.4 (2017-11-17)
 * Install `Bower` as a `devDependeny` in _package.json_ since it was removed in Ember CLI 2.12 and `ember-try` seems to have issues with that
 * Pin `ember-cli-htmlbars-inline-precompile` to `0.3.12`
